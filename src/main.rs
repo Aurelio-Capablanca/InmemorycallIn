@@ -1,45 +1,7 @@
+mod persons;
+use crate::persons::Person;
+
 use std::io;
-
-struct Person {
-    name: String,
-    lastname: String,
-    email: String,
-}
-
-impl Person {
-    fn new() -> Self {
-        //println!("Started New Person!!!");
-        Person {
-            name: String::new(),
-            lastname: String::new(),
-            email: String::new(),
-        }
-    }
-
-    fn set_name(&mut self, name: String) {
-        self.name = name;
-    }
-
-    fn set_lastname(&mut self, lastname: String) {
-        self.lastname = lastname;
-    }
-
-    fn set_email(&mut self, email: String) {
-        self.email = email;
-    }
-
-    fn get_name(&self) -> &str {
-        &self.name
-    }
-
-    fn get_lastname(&self) -> &str {
-        &self.lastname
-    }
-
-    fn get_email(&self) -> &str {
-        &self.email
-    }
-}
 
 struct RepositoryPeople {
     persons: Vec<Person>,
@@ -83,16 +45,14 @@ fn main() {
     let mut flag: bool = true;
     while flag {
         let person = call_inserts(&mut input); 
-        repository.add_person(person);   
-        println!("Do you want to continue? y/n");
+        repository.add_person(person);
+        println!("do you want to continue? y/n");
         io::stdin().read_line(&mut input).unwrap();
-        println!("Entered:  {}",input);
         if input.trim().eq_ignore_ascii_case("n") {
             flag = false;
         }
         input.clear();
     }
-    
     for person in &repository.persons {
         println!(
             "name: {}, lastname: {}, email: {}",
