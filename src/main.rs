@@ -27,7 +27,6 @@ fn call_inserts(input: &mut String) -> Person {
 }
 
 fn main() {
-    println!("TESTING!");
     let mut repository = RepositoryPeople::new();
     let mut input = String::new();
     let mut flag: bool = true;

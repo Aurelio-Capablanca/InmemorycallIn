@@ -1,4 +1,3 @@
-
 use crate::persons::Person;
 
 pub struct RepositoryPeople {
