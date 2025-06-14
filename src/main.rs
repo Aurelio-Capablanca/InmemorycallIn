@@ -1,23 +1,11 @@
 mod persons;
+mod repository;
+use crate::repository::persons_repository::RepositoryPeople;
 use crate::persons::Person;
-
 use std::io;
 
-struct RepositoryPeople {
-    persons: Vec<Person>,
-}
 
-impl RepositoryPeople {
-    fn new() -> Self {
-        RepositoryPeople {
-            persons: Vec::new(),
-        }
-    }
 
-    fn add_person(&mut self, person: Person) {
-        self.persons.push(person);
-    }
-}
 
 fn call_inserts(input: &mut String) -> Person {
     let mut person = Person::new();
@@ -44,7 +32,7 @@ fn main() {
     let mut input = String::new();
     let mut flag: bool = true;
     while flag {
-        let person = call_inserts(&mut input); 
+        let person = call_inserts(&mut input);
         repository.add_person(person);
         println!("do you want to continue? y/n");
         io::stdin().read_line(&mut input).unwrap();
@@ -53,12 +41,5 @@ fn main() {
         }
         input.clear();
     }
-    for person in &repository.persons {
-        println!(
-            "name: {}, lastname: {}, email: {}",
-            person.get_name(),
-            person.get_lastname(),
-            person.get_email()
-        );
-    }
+    repository.get_all_users();
 }
