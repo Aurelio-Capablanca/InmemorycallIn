@@ -1,30 +1,11 @@
 mod persons;
 mod repository;
+mod controllers;
+
 use crate::repository::persons_repository::RepositoryPeople;
-use crate::persons::Person;
+use crate::controllers::persons_actions::call_inserts;
 use std::io;
 
-
-
-
-fn call_inserts(input: &mut String) -> Person {
-    let mut person = Person::new();
-    println!("Enter Your Name ! ");
-    io::stdin().read_line(input).unwrap();
-    person.set_name(input.trim().to_string());
-    input.clear();
-
-    println!("Enter Your Last Name ! ");
-    io::stdin().read_line(input).unwrap();
-    person.set_lastname(input.trim().to_string());
-    input.clear();
-
-    println!("Enter Your Email ! ");
-    io::stdin().read_line(input).unwrap();
-    person.set_email(input.trim().to_string());
-    input.clear();
-    person
-}
 
 fn main() {
     let mut repository = RepositoryPeople::new();
