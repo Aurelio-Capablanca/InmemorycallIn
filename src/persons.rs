@@ -1,3 +1,4 @@
+#[derive(PartialEq)]
 pub struct Person {
     name: String,
     lastname: String,
